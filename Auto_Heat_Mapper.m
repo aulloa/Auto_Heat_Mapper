@@ -1,4 +1,5 @@
-%% Ulloa, Andres    Image Processing Interview Example    11/23/15
+function [ ] = Auto_Heat_Mapper(image,data,file)
+%% Ulloa, Andres    Auto Heat Mapper    11/23/15
 
 % The purpose of this script is to take eye traking data from multiple
 % participants looking at a single image, smooth it using kernel density 
@@ -11,17 +12,17 @@
 close all
 
 %% Image and Eye Tracking Data Import 
-h1           = importdata('animals_01.png');
-% eyeTrackData = importdata('eyeTrackData.mat');
-
+eyeTrackData = data.eyeTrackData;
+C            = file;
 %% Define as X and Y tracking coordinates
-d   = [eyeTrackData.animals.animals_01.subject_01.fixX;eyeTrackData.animals.animals_01.subject_01.fixY];
+NA  = file(65:66)
+Xstructname = strcat('animals_',cellstr(NA));
+d1  = getfield(eyeTrackData,'animals',Xstructname{1},'subject_01','fixX')
+d2  = getfield(eyeTrackData,'animals',Xstructname{1},'subject_01','fixY')
+d   = [d1;d2]
 p   = gkde2(d);
 
-
-Alphadata = p.pdf*1000000 > 1;
-B = double(Alphadata)
-B(B==0) = .1
+figure(2)
 surf(p.x,p.y,p.pdf*1000000,'FaceAlpha','flat',...
     'AlphaDataMapping','scaled',...
     'AlphaData',p.pdf*1000000,...
@@ -29,7 +30,7 @@ surf(p.x,p.y,p.pdf*1000000,'FaceAlpha','flat',...
 colormap(jet)
 hold on
 
-img    = imread('animals_01.png');     %# Load a sample image
+img    = imread(C);     %# Load a sample image
 x      = size(p.x)
 y      = size(p.y)
 xImage = [p.x(1,1)+125 p.x(1,x(1))+125; p.x(x(1),1)+125 p.x(x(1),x(1))+125];   %# The x data for the image corners
@@ -42,8 +43,10 @@ set(gca,'Ydir','reverse')
 view(2)
 axis([p.x(1,1)+125 p.x(1,x(1))+125 p.y(1,y(1))-10 p.y(y(1),y(1))-10])
 
- 
-figure(2)
-image(h1)
-hold on
-scatter(eyeTrackData.animals.animals_01.subject_01.fixX,eyeTrackData.animals.animals_01.subject_01.fixY);
+ %% Scatter Check Implementation
+% figure(3)
+% h1 = imread(C);
+% image(h1)
+% hold on
+% scatter(eyeTrackData.animals.animals_01.subject_01.fixX,eyeTrackData.animals.animals_01.subject_01.fixY);
+end

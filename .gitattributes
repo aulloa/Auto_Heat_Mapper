@@ -19,3 +19,4 @@
 *.p -crlf -diff -merge
 *.slx -crlf -diff -merge
 *.mdl -crlf -diff -merge
+*.tgz -crlf -diff -merge
