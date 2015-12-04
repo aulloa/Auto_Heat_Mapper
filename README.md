@@ -3,14 +3,17 @@
 
 ### The Gui
  - Auto_Heat_Mapper operates on a GUI which allows the user to browse through their device to find the appropriate image, XY data, and a plae to store the final image.
- 	- ![](https://raw.githubusercontent.com/aulloa/Morse_Translator_Bot/master/Bot_Page.PNG)
-    - ![](https://raw.githubusercontent.com/aulloa/Morse_Translator_Bot/master/Bot_Page.PNG)
+ 	- ![](https://raw.githubusercontent.com/aulloa/Auto_Heat_Mapper/master/Gui_Example_1.JPG)
+
+
+
+   - ![](https://raw.githubusercontent.com/aulloa/Auto_Heat_Mapper/master/Gui_Example_2.JPG)
 
 ### The Figures
  - Auto_Heat_Mapper uses a kernel smoothing function to create a 3D mesh which is overlayed on top of the image. The mesh is then set to a color and transparancy map which allows us to observe heat map data without disturbing too much of the image.
- 	- ![](https://raw.githubusercontent.com/aulloa/Morse_Translator_Bot/master/Bot_Page.PNG)
+ 	- ![](https://raw.githubusercontent.com/aulloa/Auto_Heat_Mapper/master/Heat_Map_1.JPG)
 
- 	- ![](https://raw.githubusercontent.com/aulloa/Morse_Translator_Bot/master/Bot_Page.PNG)
+ 	- ![](https://raw.githubusercontent.com/aulloa/Auto_Heat_Mapper/master/Heat_Map_2.JPG)
 
 ### The Code
  - Auto_Heat_Mapper used the [gkde2.m Bivariant Kernel Density Estimation](http://www.mathworks.com/matlabcentral/fileexchange/19280-bivariant-kernel-density-estimation-v2-0/content/gkde2.m) available on File Exchange.

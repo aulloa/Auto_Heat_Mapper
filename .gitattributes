@@ -20,3 +20,4 @@
 *.slx -crlf -diff -merge
 *.mdl -crlf -diff -merge
 *.tgz -crlf -diff -merge
+*.fig -crlf -diff -merge
